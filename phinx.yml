@@ -1,0 +1,30 @@
+paths:
+    migrations: '%%PHINX_CONFIG_DIR%%/database/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/database/seeds'
+migration_base_class: database\MigrationAbstract
+
+environments:
+    default_migration_table: phinxlog
+    default_database: dev
+
+    dev:
+        adapter: mysql
+        host: localhost
+        name: beejee_todo
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+        collation: utf8_general_ci
+
+    test:
+        adapter: mysql
+        host: localhost
+        name: beejee_todo_test
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+        collation: utf8_general_ci
+
+version_order: creation

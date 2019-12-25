@@ -1,0 +1,47 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Update TODO | {{ todo.id }} {% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Update TODO"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Update TODO</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="add-todo">
+                <form method="post" action="/todo/{{ todo.id }}/edit">
+                    {{ csrf() }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" value="{{ todo.username }}" class="form-control" disabled/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Email </label>
+                                    <input type="text" value="{{ todo.email }}" class="form-control" name="email" disabled/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Todo <span class="required">*</span></label>
+                            <textarea name="text"  class="form-control" required>{{ value('text') ? todo.text : todo.text  | trim }}</textarea>
+                            <span class="text-danger">{{  error('text') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Update ToDo</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

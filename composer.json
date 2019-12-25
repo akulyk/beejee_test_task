@@ -1,0 +1,40 @@
+{
+  "name": "beejee test work",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Alexander Kulyk",
+      "email": "akulyk@outlook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.1",
+    "illuminate/database": "^5.6",
+    "illuminate/container": "^5.6",
+    "illuminate/routing": "^5.6",
+    "illuminate/events": "^5.6",
+    "illuminate/console": "^5.6",
+    "illuminate/filesystem": "^5.6",
+    "illuminate/translation": "^5.6",
+    "illuminate/validation": "^5.8",
+    "robmorgan/phinx": "dev-master",
+    "jeffochoa/validator-factory": "dev-master",
+    "fzaninotto/faker": "^1.9@dev",
+    "chiron/http-exceptions": "dev-master",
+    "twig/twig": "^3.0",
+    "illuminate/pagination": "5.8.x-dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "7.5.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/",
+      "database\\": "database/"
+    },
+    "files": [
+      "helpers.php"
+    ]
+  }
+}

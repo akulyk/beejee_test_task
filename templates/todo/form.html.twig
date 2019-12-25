@@ -1,0 +1,29 @@
+<div class="add-todo">
+    <form method="post" action="/todo/create">
+        {{ csrf() }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Username <span class="required">*</span></label>
+                    <input type="text" value="{{ value('username') }}" name="username" class="form-control" required/>
+                    <span class="error">{{  error('username') }}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">Email <span class="required">*</span></label>
+                    <input type="text" value="{{ value('email') }}" class="form-control" name="email" required/>
+                    <span class="error">{{  error('email') }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Todo <span class="required">*</span></label>
+            <textarea name="text"  class="form-control" required>{{ value('text') | trim }}</textarea>
+            <span class="text-danger">{{  error('text') }}</span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Add ToDo</button>
+        </div>
+    </form>
+</div>

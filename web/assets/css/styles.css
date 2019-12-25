@@ -1,0 +1,9 @@
+.add-todo{
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.required,
+.error{
+    color: red;
+}

@@ -1,0 +1,23 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Add TODO {% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Add TODO"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Add TODO</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="add-todo">
+                {% include 'todo/form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

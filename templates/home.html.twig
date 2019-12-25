@@ -1,0 +1,82 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}Alexander Kulyk | Todo{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Home Page description"/>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/todo/create" class="btn btn-success">
+                Create new ToDo
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% if todos %}
+                <table class="table">
+                    <thead>
+                    <th>
+                        <a class="sort" href="{{ sortUrl('id') }}">ID</a>
+                    </th>
+                    <th>
+                        <a class="sort" href="{{ sortUrl('username') }}">Username</a>
+                    </th>
+                    <th>
+                        <a class="sort" href="{{ sortUrl('email') }}">Email</a>
+                    </th>
+                    <th>Text</th>
+                    <th>
+                        <a class="sort" href="{{ sortUrl('status') }}">Status</a>
+                    </th>
+                    {% if not isGuest() %}
+                        <th>
+                           Actions
+                        </th>
+                    {% endif %}
+                    </thead>
+                    <tbody>
+                    {% for todo in todos %}
+                        <tr>
+                            <td>{{ todo.id }}</td>
+                            <td>{{ todo.username }}</td>
+                            <td>{{ todo.email }}</td>
+                            <td>{{ todo.text }}</td>
+                            <td>{{ todo.status }}</td>
+                            {% if not isGuest() %}
+                                <td><a href="/todo/{{ todo.id }}/edit" class="btn btn-warning">Edit</a>
+                                    <a href="todo/{{ todo.id }}/finish"
+                                       onclick="event.preventDefault();
+                                       if(window.confirm('Are you sure?')){
+                                           window.location.href = event.target.getAttribute('href');
+                                       };"
+                                       class="btn btn-info">Finish</a>
+                                    <a href="todo/{{ todo.id }}/delete"
+                                       onclick="event.preventDefault();
+                                       if(window.confirm('Are you sure?')){
+                                           window.location.href = event.target.getAttribute('href');
+                                       };"
+                                       class="btn btn-danger">Delete</a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% if pagination.needed %}
+                    <div class="pagination">
+                        {% for i in 1..pagination.lastpage %}
+                            <li class="page-item {% if i == pagination.page %}active{% endif %}">
+                                <a class="page-link"
+                                   href="{{ pageUrl(i) }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
